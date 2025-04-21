@@ -1,3 +1,330 @@
-<p>HELLO大家好</p>
-<p>我是PINEAPPLE579，这是我的个人网站。</p>
-<p>很高兴你来到这里!</p>
+<!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PINEAPPLE579's Blog</title>
+        <style>
+            :root {
+                --primary-color: #2d3436;
+                --accent-color: #0984e3;
+                --light-gray: #f5f6fa;
+                --transition: all 0.3s ease;
+            }
+
+            .dark {
+                --primary-color: #f5f6fa;
+                background-color: #1a1a1a;
+                color: #ffffff;
+            }
+
+            .dark .header {
+                background: rgba(26, 26, 26, 0.95);
+                border-bottom: 1px solid #333;
+            }
+
+            .dark .nav-links a,
+            .dark .logo {
+                color: #ffffff;
+            }
+
+            .dark .article-card {
+                border-color: #333;
+            }
+
+            .dark footer {
+                background: #111;
+                color: #ffffff;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            }
+
+            body {
+                line-height: 1.6;
+                color: var(--primary-color);
+                background: #fff;
+                transition: var(--transition);
+            }
+
+            .header {
+                padding: 2rem 1rem;
+                border-bottom: 1px solid #eee;
+                position: sticky;
+                top: 0;
+                backdrop-filter: blur(10px);
+                z-index: 100;
+            }
+
+            .nav {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                text-decoration: none;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                color: var(--primary-color);
+                text-decoration: none;
+                transition: var(--transition);
+            }
+
+            .nav-links a:hover {
+                color: var(--accent-color);
+            }
+
+            .theme-switch,
+            .lang-switch {
+                border: none;
+                background: none;
+                font-size: 1.2rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .hero {
+                max-width: 1200px;
+                margin: 6rem auto;
+                padding: 0 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                color: #666;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .articles {
+                max-width: 800px;
+                margin: 4rem auto;
+                padding: 0 1rem;
+            }
+
+            .article-card {
+                margin-bottom: 3rem;
+                padding: 2rem;
+                border-radius: 8px;
+                transition: var(--transition);
+                border: 1px solid #eee;
+                background: #ffffff;
+            }
+
+            .dark .article-card {
+                background: #2d2d2d;
+            }
+
+            .article-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            .article-date {
+                color: #999;
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .article-title {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                color: var(--primary-color);
+                text-decoration: none;
+            }
+
+            .article-excerpt {
+                color: #666;
+                margin-bottom: 1rem;
+            }
+
+            .read-more {
+                display: inline-block;
+                color: var(--accent-color);
+                text-decoration: none;
+                font-weight: 500;
+                transition: var(--transition);
+            }
+
+            .read-more:hover {
+                opacity: 0.8;
+            }
+
+            footer {
+                padding: 3rem 1rem;
+                text-align: center;
+                margin-top: 6rem;
+            }
+
+            @media (max-width: 768px) {
+                .nav-links {
+                    display: none;
+                }
+                
+                .hero h1 {
+                    font-size: 2rem;
+                }
+                
+                .article-card {
+                    padding: 1.5rem;
+                }
+            }
+        </style>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav">
+                <a href="#" class="logo" data-i18n="logo">PINEAPPLE579</a>
+                <div class="nav-links">
+                    <a href="#" data-i18n="nav.articles">文章</a>
+                    <a href="#" data-i18n="nav.about">关于</a>
+                    <a href="#" data-i18n="nav.projects">项目</a>
+                    <a href="#" data-i18n="nav.contact">联系</a>
+                </div>
+                <div class="theme-lang-switch">
+                    <button class="theme-switch" id="themeToggle">
+                        <i class="fas fa-sun"></i>
+                        <span class="sr-only" data-i18n="theme.switch">切换主题</span>
+                    </button>
+                    <button class="lang-switch" id="langToggle" data-lang="zh">
+                        <span data-i18n="lang.zh">中</span> / 
+                        <span data-i18n="lang.en">En</span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1 data-i18n="hero.title">思考 · 创造 · 分享</h1>
+            <p data-i18n="hero.description">这里是清风的数字花园，记录技术思考、生活观察与创作历程</p>
+        </section>
+
+        <main class="articles">
+            <article class="article-card">
+                <div class="article-date" data-i18n="article.date.1">2024年3月15日 · 技术思考</div>
+                <a href="#" class="article-title" data-i18n="article.title.1">现代Web开发的核心范式演进</a>
+                <p class="article-excerpt" data-i18n="article.excerpt.1">在这篇文章中，我们将探讨近年来前端开发范式的重大转变，从传统的MVC模式到现代组件化架构，分析框架背后的设计哲学...</p>
+                <a href="#" class="read-more" data-i18n="read.more">阅读全文 →</a>
+            </article>
+
+            <article class="article-card">
+                <div class="article-date" data-i18n="article.date.2">2024年3月12日 · 生活美学</div>
+                <a href="#" class="article-title" data-i18n="article.title.2">极简主义在数字时代的实践</a>
+                <p class="article-excerpt" data-i18n="article.excerpt.2">当信息过载成为常态，如何构建数字极简生活？本文分享个人在信息筛选、工具选择和使用习惯方面的实践经验...</p>
+                <a href="#" class="read-more" data-i18n="read.more">阅读全文 →</a>
+            </article>
+        </main>
+
+        <footer>
+            <p data-i18n="footer.copyright">© 2025 PINEAPPLE579 · 构建数字思维空间</p>
+            <div style="margin-top: 1rem;">
+                <a href="#" style="color: #666; margin: 0 0.5rem;">GitHub</a>
+                <a href="#" style="color: #666; margin: 0 0.5rem;">Twitter</a>
+                <a href="#" style="color: #666; margin: 0 0.5rem;">Email</a>
+            </div>
+        </footer>
+
+        <script>
+            const i18n = {
+                zh: {
+                    logo: 'PINEAPPLE579',
+                    nav: { articles: '文章', about: '关于', projects: '项目', contact: '联系' },
+                    theme: { switch: '切换主题' },
+                    lang: { zh: '中', en: 'En' },
+                    hero: { title: '思考 · 创造 · 分享', description: '这里是清风的数字花园，记录技术思考、生活观察与创作历程' },
+                    article: {
+                        date: { 1: '2024年3月15日 · 技术思考', 2: '2024年3月12日 · 生活美学' },
+                        title: { 1: '现代Web开发的核心范式演进', 2: '极简主义在数字时代的实践' },
+                        excerpt: { 1: '在这篇文章中，我们将探讨近年来前端开发范式的重大转变，从传统的MVC模式到现代组件化架构，分析框架背后的设计哲学...', 2: '当信息过载成为常态，如何构建数字极简生活？本文分享个人在信息筛选、工具选择和使用习惯方面的实践经验...' }
+                    },
+                    read: { more: '阅读全文 →' },
+                    footer: { copyright: '© 2025 PINEAPPLE579 · 构建数字思维空间' }
+                },
+                en: {
+                    logo: 'Qingfeng Notes',
+                    nav: { articles: 'Articles', about: 'About', projects: 'Projects', contact: 'Contact' },
+                    theme: { switch: 'Toggle Theme' },
+                    lang: { zh: '中', en: 'En' },
+                    hero: { title: 'Think · Create · Share', description: 'This is Qingfeng\'s digital garden, recording technical thoughts, life observations, and creative processes' },
+                    article: {
+                        date: { 1: 'March 15, 2024 · Technical Thinking', 2: 'March 12, 2024 · Life Aesthetics' },
+                        title: { 1: 'Evolution of Core Paradigms in Modern Web Development', 2: 'Practice of Minimalism in the Digital Age' },
+                        excerpt: { 1: 'In this article, we explore the significant shifts in frontend development paradigms in recent years, from traditional MVC patterns to modern component-based architectures, analyzing the design philosophy behind frameworks...', 2: 'As information overload becomes the norm, how to build a digital minimalist life? This article shares personal practices in information filtering, tool selection, and usage habits...' }
+                    },
+                    read: { more: 'Read More →' },
+                    footer: { copyright: '© 2024 Qingfeng Blog · Building a Digital Thinking Space' }
+                }
+            };
+
+            const langToggle = document.getElementById('langToggle');
+            const themeToggle = document.getElementById('themeToggle');
+            let currentLang = localStorage.getItem('lang') || 'zh';
+            let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+            function updateLanguage(lang) {
+                document.documentElement.lang = lang;
+                langToggle.dataset.lang = lang;
+                localStorage.setItem('lang', lang);
+                const elements = document.querySelectorAll('[data-i18n]');
+                elements.forEach(element => {
+                    const keys = element.dataset.i18n.split('.');
+                    let current = i18n[lang];
+                    keys.forEach(key => current = current[key]);
+                    element.textContent = current;
+                });
+                updateThemeIcon();
+            }
+
+            function toggleTheme() {
+                isDarkMode = !isDarkMode;
+                document.body.classList.toggle('dark', isDarkMode);
+                localStorage.setItem('darkMode', isDarkMode);
+                updateThemeIcon();
+            }
+
+            function updateThemeIcon() {
+                themeToggle.innerHTML = isDarkMode ? 
+                    '<i class="fas fa-moon"></i><span class="sr-only">' + i18n[currentLang].theme.switch + '</span>' : 
+                    '<i class="fas fa-sun"></i><span class="sr-only">' + i18n[currentLang].theme.switch + '</span>';
+            }
+
+            function init() {
+                document.body.classList.toggle('dark', isDarkMode);
+                updateLanguage(currentLang);
+                themeToggle.addEventListener('click', toggleTheme);
+                langToggle.addEventListener('click', () => {
+                    const newLang = currentLang === 'zh' ? 'en' : 'zh';
+                    updateLanguage(newLang);
+                    currentLang = newLang;
+                });
+            }
+
+            init();
+        </script>
+    </body>
+    </html>
+    
